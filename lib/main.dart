@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pages/calendario_reservas.dart';
 import 'pages/payment_page.dart';
-import 'pages/login_page.dart';
-import 'pages/register_page.dart';
 import 'pages/home_screen.dart';
 
 void main() {
@@ -16,13 +14,11 @@ class MyApp extends StatelessWidget {
       title: 'Mi Restaurante',
       theme: ThemeData(primarySwatch: Colors.blue),
       debugShowCheckedModeBanner: false, // Oculta el banner de debug
-      initialRoute: '/login', // Define la primera pantalla
+      initialRoute: '/home', // Define la primera pantalla
       routes: {
-        '/login': (context) => LoginPage(), // Página de inicio de sesión
-        '/register': (context) => RegisterPage(), // Página de registro
         '/home': (context) => HomeScreen(), // Página principal
         '/calendar': (context) => ReservaScreen(), // Calendario de reservas
-        '/payment': (context) => PaymentPage(), // Página de pagos
+        // '/payment': (context) => PaymentPage(selectedDate: selectedDate),
       },
     );
   }

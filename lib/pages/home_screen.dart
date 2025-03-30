@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurante/pages/Calendario_reservas.dart'; // Ajusta la ruta si es necesario
 
 void main() {
   runApp(SitEatApp());
@@ -7,7 +8,14 @@ void main() {
 class SitEatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: HomeScreen());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
+      routes: {
+        '/calendar':
+            (context) => ReservaScreen(), // Define la ruta para el calendario
+      },
+    );
   }
 }
 
@@ -69,6 +77,15 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _selectedIndex = index;
     });
+
+    // Navegar según el ítem seleccionado
+    if (index == 0) {
+      // Si se selecciona el calendario
+      Navigator.pushNamed(context, '/calendar');
+    } else if (index == 1) {
+      // Si se selecciona el pago
+      Navigator.pushNamed(context, '/payment');
+    }
   }
 
   @override
@@ -101,7 +118,6 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Campo de búsqueda
             TextField(
               onChanged: (value) {
                 setState(() {
